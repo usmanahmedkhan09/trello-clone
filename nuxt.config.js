@@ -1,5 +1,6 @@
 import { resolve } from 'path'
 export default {
+  target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'trello-clone',
@@ -29,6 +30,9 @@ export default {
   plugins: [
   ],
 
+  router: {
+    middleware: ['auth']
+  },
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
@@ -39,6 +43,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+
     [
       '@nuxtjs/firebase',
       {
@@ -51,10 +56,20 @@ export default {
           appId: "1:834143514212:web:9d7623b1dcf46dcaf0b971"
         },
         services: {
-          auth: true // Just as example. Can be any other service.
+          auth: {
+            persistence: 'local', // default
+            initialize: {
+              // onAuthStateChangedAction: 'onAuthStateChangedAction',
+              subscribeManually: false
+            },
+            ssr: false, // default
+          },
+          firestore: true,
+          storage: true
         }
       }
-    ]
+    ],
+    ['cookie-universal-nuxt', { alias: 'cookiz' }]
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
