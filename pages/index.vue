@@ -8,6 +8,9 @@
     </div>
   </div>
 </template>
+<script>
+export default {};
+</script>
 <style>
 .Container {
   display: grid;
@@ -17,7 +20,6 @@
   grid-template-areas: "topbar" "content";
 }
 .topbar {
-  /* height: 2.5rem; */
   grid-area: topbar;
 }
 

@@ -34,7 +34,6 @@ export const actions = {
                 email: email,
                 userId: uid
             })
-            console.log(payload)
             ctx.commit('SET_AUTH', true)
             this.$cookiz.set('auth', true)
             this.$router.push({ path: '/' })
